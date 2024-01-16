@@ -5,4 +5,4 @@ metadata:
   name: awx
 spec:
   service_type: nodeport
-  nodeport_port: 32000
+  nodeport_port: 30080
