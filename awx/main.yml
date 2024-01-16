@@ -11,7 +11,7 @@
       ansible.builtin.shell: curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
     - name: Move Kustomize file
-      ansible.builtin.shell: mv ~/kustomize /usr/local/bin
+      ansible.builtin.shell: mv kustomize /usr/local/bin
     
     - name: Download Kustomize.yaml file
       ansible.builtin.shell:  wget https://raw.githubusercontent.com/aaronevolved/public/main/awx/kustomization.yaml
