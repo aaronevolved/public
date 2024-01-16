@@ -14,4 +14,13 @@
       ansible.builtin.shell: mv /home/zgadmin/kustomize /usr/local/bin
     
     - name: Download Kustomize.yaml file
-      ansible.builtin.shell:  
+      ansible.builtin.shell:  wget https://raw.githubusercontent.com/aaronevolved/public/main/awx/kustomization.yaml
+
+    - name: Run Kustomization 
+      ansible.builtin.shell: kustomize build . | kubectl apply -f -
+
+    - name: 
+      ansible.builtin.shell:  kubectl get pods --namespace awx
+
+    - name: 
+      ansible.builtin.shell:    
