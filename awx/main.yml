@@ -7,6 +7,9 @@
     - name: Install kubnetes
       ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
 
+    - name: allow all users to run kubectl
+      ansible.builtin.shell: chmod +x /usr/local/bin/kubectl
+
     - name: Kustomize Script
       ansible.builtin.shell: curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
