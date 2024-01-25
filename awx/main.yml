@@ -3,33 +3,42 @@
   gather_facts: true
   hosts: all
   become: yes
-  become_user:  zgadmin
-  become_method: sudo
   tasks:
     - name: Install kubnetes
       ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
+      become: true
+      become_user: zgadmin
 
     - name: allow all users to run kubectl
       ansible.builtin.shell: chmod +x /usr/local/bin/kubectl
+      become: true
+      become_user: zgadmin
 
     - name: Kustomize Script
       ansible.builtin.shell: curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+      become: true
+      become_user: zgadmin      
 
     - name: Move Kustomize file
       ansible.builtin.shell: mv kustomize /usr/local/bin
+      become: true
+      become_user: zgadmin      
 
     - name: Create namespace awx
       ansible.builtin.shell: kubectl create namespace awx
+      become: true
+      become_user: zgadmin      
     
     - name: Download Kustomize.yaml file
       ansible.builtin.shell:  wget https://raw.githubusercontent.com/aaronevolved/public/main/awx/kustomization.yaml
 
     - name: Download awx-cr.yaml file
       ansible.builtin.shell:  wget https://raw.githubusercontent.com/aaronevolved/public/main/awx/awx-cr.yaml
-    
 
     - name: Run Kustomization 
       ansible.builtin.shell: kustomize build . | kubectl apply -f - 
+      become: true
+      become: zgadmin
 
     - name: Pause for 5 minutes to build app cache
       ansible.builtin.pause:
