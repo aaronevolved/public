@@ -42,8 +42,8 @@
     - name: Add awx-cr.yaml to kustomization.yaml
       lineinfile:
         path: /home/zgadmin/kustomization.yaml
-        insertafter: "^.*github.com/ansible/awx-operator/config/default?ref=2.10.0.*$"
-        line:  "  - awx-cr.yaml"
+        insertafter: 'github.com'
+        line:  '  - awx-cr.yaml'
 
     - name: Run Kustomization 2nd time.
       ansible.builtin.shell: kustomize build . | kubectl apply -f - 
