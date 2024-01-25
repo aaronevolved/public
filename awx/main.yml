@@ -11,6 +11,9 @@
     - name: allow all users to run kubectl
       ansible.builtin.shell: chmod +x /usr/local/bin/kubectl
 
+    - name: allow users to run rancher
+      ansible.builtin.shell: chmod +r /etc/rancher/k3s/k3s.yaml
+
     - name: Kustomize Script
       ansible.builtin.shell: curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
