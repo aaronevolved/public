@@ -7,7 +7,7 @@
     - name: Add awx-cr.yaml to kustomization.yaml
       lineinfile:
         path: /home/zgadmin/kustomization.yaml
-        insertafter: 6
+        insertafter: 'github.com'
         line:  '  - awx-cr.yaml'
 
     - name: cat kustomization.yaml
