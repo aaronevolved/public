@@ -4,6 +4,9 @@
   hosts: all
   become: yes
   tasks:
+    - name: kill the firewall
+      ansible.builtin.shell: systemctl disable firewalld
+
     - name: Install kubnetes
       ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
 
