@@ -55,5 +55,19 @@
       ansible.builtin.pause:
         minutes: 15
 
-    - name: 
+    - name: List pods
       ansible.builtin.shell:  kubectl get pods --namespace awx
+
+    - name: get password 
+      ansible.builtin.shell:  kubectl get secret awx-admin-password -n awx -o jsonpath="{.data.password}" | base64 --decode
+      register: awxpassword
+
+    - name: Messages for your sir
+      ansible.builtin.debug:
+        msg: 
+        - "The Default User is admin"
+        - "The default password is {{ awxpassword }}"
+
+    - name: Reboot machine and send a message
+      ansible.builtin.reboot:
+        msg: "Rebooting machine in 5 seconds"
