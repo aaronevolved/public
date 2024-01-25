@@ -1,0 +1,11 @@
+---
+- name: Install AWX on Alma Linux 9
+  gather_facts: true
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add awx-cr.yaml to kustomization.yaml
+      lineinfile:
+        path: /home/zgadmin/kustomization.yaml
+        insertafter: "^\t-\sgithub.com/ansible/awx-operator/config/default?ref=2\.10\.0$"
+        line:  "  - awx-cr.yaml"
