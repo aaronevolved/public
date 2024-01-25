@@ -9,3 +9,6 @@
         path: /home/zgadmin/kustomization.yaml
         insertafter: 6
         line:  '  - awx-cr.yaml'
+
+    - name: cat kustomization.yaml
+      ansible.builtin.shell: cat /home/zgadmin/kustomization.yaml
