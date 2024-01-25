@@ -3,6 +3,8 @@
   gather_facts: true
   hosts: all
   become: yes
+  become_user:  zgadmin
+  become_method: sudo
   tasks:
     - name: Install kubnetes
       ansible.builtin.shell: curl -sfL https://get.k3s.io | sh -
@@ -15,6 +17,9 @@
 
     - name: Move Kustomize file
       ansible.builtin.shell: mv kustomize /usr/local/bin
+
+    - name: Create namespace awx
+      ansible.builtin.shell: kubectl create namespace awx
     
     - name: Download Kustomize.yaml file
       ansible.builtin.shell:  wget https://raw.githubusercontent.com/aaronevolved/public/main/awx/kustomization.yaml
