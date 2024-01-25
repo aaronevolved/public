@@ -26,12 +26,12 @@
     - name: Download awx-cr.yaml file
       ansible.builtin.shell:  wget https://raw.githubusercontent.com/aaronevolved/public/main/awx/awx-cr.yaml
 
-    - name: Run Kustomization 
-      ansible.builtin.shell: kustomize build . | kubectl apply -f - 
+#   - name: Run Kustomization 
+#      ansible.builtin.shell: kustomize build . | kubectl apply -f - 
 
-    - name: Pause for 5 minutes to build app cache
-      ansible.builtin.pause:
-        minutes: 15
+#   - name: Pause for 5 minutes to build app cache
+#     ansible.builtin.pause:
+#        minutes: 15
 
     - name: 
       ansible.builtin.shell:  kubectl get pods --namespace awx
