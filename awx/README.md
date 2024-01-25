@@ -22,3 +22,9 @@ Notes
 - I found that I got a lot of errors when I added the "- awx-cr.yaml" file to the kustomaization.yaml file, and would only install the AWX operator.
 - I then modded the playbook to install the AWX Operator, then modify the kustomatization.yaml file to include the - awx-cr.yaml file.
 - I was getting CrashLoopBackOff errors on the AWX-WEB pod, which was resolved by disabling the firewall.
+
+
+Links
+-------
+- https://ansible.readthedocs.io/projects/awx-operator/en/latest/installation/basic-install.html
+- https://sysadmin.info.pl/en/blog/how-to-install-awx-using-ansible-playbook/
