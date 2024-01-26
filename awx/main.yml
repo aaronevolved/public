@@ -1,7 +1,7 @@
 ---
 - name: Install AWX on Alma Linux 9
   gather_facts: true
-  hosts: all
+  hosts: {{ SURVEY_HOST }}
   become: yes
   tasks:
     - name: kill the firewall
