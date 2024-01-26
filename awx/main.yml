@@ -1,12 +1,11 @@
 ---
 - name: Install AWX on Alma Linux 9
   gather_facts: true
-  hosts: {{ SURVEY_HOST }}
+  hosts: all
   become: yes
   tasks:
-    - name:  show host 
-      Debug:
-        var: {{ SURVEY_HOST }}
+    - name:  install git
+      ansible.builtin.shell: dnf install git -y
 
     - name: kill the firewall
       ansible.builtin.shell: systemctl disable firewalld
